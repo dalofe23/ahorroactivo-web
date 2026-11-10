@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de endeudamiento: ¿qué porcentaje de tus ingresos van a cuotas? | Ahorro Activo</title>
+<meta name="description" content="Calcula qué porcentaje de tus ingresos netos se va en cuotas de hipoteca, préstamos y tarjetas y compáralo con la referencia del 35-40 %.">
+<link rel="canonical" href="https://www.ahorroactivo.es/herramientas/calculadora-de-endeudamiento.html">
+<meta property="og:url" content="https://www.ahorroactivo.es/herramientas/calculadora-de-endeudamiento.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Calculadora de endeudamiento: ¿qué porcentaje de tus ingresos van a cuotas? | Ahorro Activo">
+<meta property="og:description" content="Calcula qué porcentaje de tus ingresos netos se va en cuotas de hipoteca, préstamos y tarjetas y compáralo con la referencia del 35-40 %.">
+<meta property="og:site_name" content="Ahorro Activo">
+<meta property="og:locale" content="es_ES">
+<meta name="theme-color" content="#1a237e">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9286321272435155" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Calculadora de endeudamiento: ¿qué porcentaje de tus ingresos van a cuotas?", "url": "https://www.ahorroactivo.es/herramientas/calculadora-de-endeudamiento.html", "inLanguage": "es", "publisher": {"@type": "Organization", "name": "Ahorro Activo"}}</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="wrap bar"><a class="brand" href="../index.html" aria-label="Ahorro Activo, inicio"><span class="mark" aria-hidden="true">AA</span><span class="brand-text">Ahorro Activo<small>Educación financiera</small></span></a><nav aria-label="Principal"><a href="../index.html#ahorro">Ahorro</a><a href="../index.html#inversion">Inversión</a><a href="../index.html#energia">Energía</a><a href="../index.html#autonomos">Autónomos</a><a href="../herramientas/index.html">Herramientas</a><a href="../p/quienes-somos-ahorro-activo.html">Quiénes somos</a></nav></div></header>
+<main id="contenido" class="wrap">
+<nav class="crumbs" aria-label="Ruta"><a href="../index.html">Inicio</a> <span aria-hidden="true">›</span> <a href="index.html">Herramientas</a></nav>
+<article class="post">
+<div style="color: #333333; font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; margin: auto; max-width: 800px; padding: 16px;">
+    <h1 style="color: #1a237e; font-size: 32px; font-weight: 800; line-height: 1.2; margin: 0 0 18px;">Calculadora de endeudamiento: ¿cuánto de tus ingresos se va en cuotas?</h1>
+    <p style="font-size: 16px; margin: 0 0 16px;">Esta calculadora te dice <strong>qué porcentaje de tus ingresos netos se va en cuotas de deudas</strong> y lo compara con la referencia orientativa que recoge Finanzas para Todos: que las cuotas no superen el 35-40&nbsp;% de los ingresos. Los cálculos se hacen en tu navegador; lo que escribes no se envía ni se guarda.</p>
+<form class="calc" onsubmit="return false" aria-label="Calculadora de endeudamiento"><div class="fld"><label for="ing">Ingresos netos mensuales (€)</label><input id="ing" type="text" inputmode="decimal" autocomplete="off" placeholder="0"><small>Lo que realmente cobras cada mes</small></div><div class="fld"><label for="hip">Hipoteca (€ al mes)</label><input id="hip" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div><div class="fld"><label for="pre">Préstamos: coche, consumo, estudios… (€ al mes)</label><input id="pre" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div><div class="fld"><label for="tar">Tarjetas de crédito y compras aplazadas (€ al mes)</label><input id="tar" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div><button type="button" id="go1" class="btn">Calcular</button><div id="res1" class="res" role="status" aria-live="polite"></div></form><script>
+function n(id){var v=document.getElementById(id).value.replace(/\s/g,'').replace(/\./g,'').replace(',','.');var x=parseFloat(v);return isNaN(x)||x<0?0:x}
+function eur(x){return x.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:2})+' \u20ac'}
+function pct(x){return x.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:1})+' %'}
+</script><script>
+document.getElementById('go1').onclick=function(){
+var ing=n('ing'),cu=n('hip')+n('pre')+n('tar'),r=document.getElementById('res1');
+if(ing<=0){r.innerHTML='<p>Introduce tus ingresos netos mensuales para calcular.</p>';return}
+var p=cu/ing*100,m35=ing*0.35,m40=ing*0.40,msg,cls;
+if(p<=35){msg='Tu nivel de endeudamiento est\u00e1 dentro de la referencia del 35\u00a0%.';cls='ok'}
+else if(p<=40){msg='Est\u00e1s entre el 35\u00a0% y el 40\u00a0%: dentro de la referencia m\u00e1s amplia, pero con poco margen.';cls='warn'}
+else{msg='Superas el 40\u00a0% de referencia: conviene reducir cuotas o no a\u00f1adir nuevas.';cls='bad'}
+var libre=m40-cu;
+r.className='res '+cls;
+r.innerHTML='<p class="big">'+pct(p)+'</p><p>'+msg+'</p><ul><li>Cuotas mensuales totales: <strong>'+eur(cu)+'</strong></li><li>Referencia del 35\u00a0%: '+eur(m35)+' al mes</li><li>Referencia del 40\u00a0%: '+eur(m40)+' al mes</li><li>'+(libre>=0?'Margen hasta el 40\u00a0%: <strong>'+eur(libre)+'</strong> al mes':'Exceso sobre el 40\u00a0%: <strong>'+eur(-libre)+'</strong> al mes')+'</li></ul>';
+};
+</script>    <h2 style="border-bottom: 2px solid #e8eaf6; color: #1a237e; font-size: 24px; padding-bottom: 6px;">Cómo se interpreta el resultado</h2>
+    <ul style="padding-left: 22px;">
+        <li style="margin-bottom: 8px;"><strong>Hasta el 35&nbsp;%:</strong> dentro de la referencia más prudente.</li>
+        <li style="margin-bottom: 8px;"><strong>Entre el 35 y el 40&nbsp;%:</strong> dentro de la referencia más amplia, con poco margen ante un imprevisto.</li>
+        <li style="margin-bottom: 8px;"><strong>Más del 40&nbsp;%:</strong> por encima de lo que muchos expertos consideran razonable. Conviene revisar tus cuotas antes de asumir otras nuevas.</li>
+    </ul>
+    <p style="font-size: 16px; margin: 0 0 16px;">Es una referencia orientativa, no un límite legal. Tu situación (familia, estabilidad de ingresos, ahorro) puede aconsejar un porcentaje menor. Para entender el método con un ejemplo completo, lee <a href="https://www.ahorroactivo.es/2026/11/cuanta-deuda-es-demasiado-calcula-tu-endeudamiento.html" style="color: #1a237e; font-weight: 600;">Cuánta deuda es demasiado</a>.</p>
+    <h2 style="border-bottom: 2px solid #e8eaf6; color: #1a237e; font-size: 24px; padding-bottom: 6px;">Qué cuentan y qué no cuentan estas cuotas</h2>
+    <p style="font-size: 16px; margin: 0 0 16px;">Se incluyen las cuotas de <strong>hipoteca, préstamos y tarjetas de crédito</strong>, también las compras aplazadas. Gastos como el alquiler, la luz o la comida no son deudas: conviene revisarlos en tu <a href="https://www.ahorroactivo.es/2026/10/como-hacer-un-presupuesto-mensual-paso-a-paso.html" style="color: #1a237e; font-weight: 600;">presupuesto mensual</a> o con la <a href="https://www.ahorroactivo.es/herramientas/calculadora-de-presupuesto-mensual.html" style="color: #1a237e; font-weight: 600;">calculadora de presupuesto</a>.</p>
+    <h2 style="color: #1a237e; font-size: 22px; margin-top: 35px;">Preguntas frecuentes</h2>
+    <div style="background: #f1f3f4; border-radius: 8px; font-size: 15px; padding: 20px;">
+        <p style="margin: 0 0 12px;"><strong>¿Uso ingresos brutos o netos?</strong> Netos, es decir, lo que llega a tu cuenta cada mes. Si varían, usa una cifra prudente, como la del mes más bajo de los últimos meses.</p>
+        <p style="margin: 0 0 12px;"><strong>¿La calculadora guarda mis datos?</strong> No. Todo se calcula en tu navegador y no se envía a ningún servidor.</p>
+        <p style="margin: 0;"><strong>¿Es una recomendación financiera?</strong> No. Es una herramienta educativa con una referencia orientativa. Si tienes dificultades para pagar tus cuotas, consulta cuanto antes con tu entidad o con un profesional.</p>
+    </div>
+
+    <h2 style="color: #1a237e; font-size: 22px; margin-top: 35px;">Fuentes y más información</h2>
+    <ul style="font-size: 15px; padding-left: 20px;">
+        <li><a href="https://www.finanzasparatodos.es/c-mo-gestionar-mis-deudas" target="_blank" rel="noopener noreferrer" style="color: #1a237e; font-weight: 600;">Finanzas para Todos – ¿Cómo gestionar mis deudas?</a>: referencia del 35-40 % de los ingresos.</li>
+        <li><a href="https://clientebancario.bde.es/pcb/es/blog/planifica-tus-compras-para-evitar-caer-en-el-sobreendeudamiento.html" target="_blank" rel="noopener noreferrer" style="color: #1a237e; font-weight: 600;">Banco de España – Planifica tus compras para evitar caer en el sobreendeudamiento</a>: consejos antes de financiar una compra.</li>
+    </ul>
+    <footer style="color: #666666; font-size: 13px; font-style: italic; line-height: 1.5; margin-top: 40px; text-align: center;">
+        Herramienta educativa: el resultado es orientativo y no sustituye al asesoramiento financiero personalizado. Revisado en noviembre de 2026.
+    </footer>
+</div>
+</article>
+<section class="related"><h2>Sigue leyendo</h2><div class="grid"><a class="card" href="../2026/11/cuanta-deuda-es-demasiado-calcula-tu-endeudamiento.html"><span class="tag">Ahorro y presupuesto</span><h3>Cuánta deuda es demasiado: cómo calcular tu nivel de endeudamiento</h3><p>Pedir un préstamo, pagar a plazos o usar la tarjeta no es malo en sí. El problema llega cuando las cuotas mensuales se comen una parte tan grande de tus…</p><span class="meta">Noviembre 2026</span></a>
+<a class="card" href="../2026/10/como-hacer-un-presupuesto-mensual-paso-a-paso.html"><span class="tag">Ahorro y presupuesto</span><h3>Cómo hacer un presupuesto mensual paso a paso</h3><p>Un presupuesto mensual es un plan sencillo que compara lo que ingresas con lo que gastas para decidir, antes de que acabe el mes, a dónde va tu dinero. No…</p><span class="meta">Octubre 2026</span></a>
+<a class="card" href="../2026/10/fondo-de-emergencia.html"><span class="tag">Ahorro y presupuesto</span><h3>Fondo de emergencia: cuánto dinero ahorrar y dónde guardarlo</h3><p>Un fondo de emergencia es un dinero que apartas para imprevistos: una avería, una factura inesperada, un gasto médico o unos meses sin ingresos. No sirve para…</p><span class="meta">Octubre 2026</span></a>
+</div></section>
+</main>
+<footer class="site-footer"><div class="wrap"><div class="foot-grid"><div><strong class="foot-title">Ahorro Activo</strong><p>Educación financiera en español, explicada con calma y con fuentes. Contenido informativo y educativo: no es asesoramiento financiero, fiscal ni legal.</p></div><div><strong class="foot-title">Información</strong><ul><li><a href="../p/quienes-somos-ahorro-activo.html">Quiénes somos</a></li><li><a href="../p/contacto.html">Contacto</a></li><li><a href="../p/aviso-legal.html">Aviso legal</a></li><li><a href="../p/privacy-policy.html">Política de privacidad</a></li></ul></div></div><p class="copy">© 2026 Ahorro Activo</p></div></footer>
+</body>
+</html>
